@@ -2,6 +2,7 @@
 #define COLLAR_H
 #include <iostream>
 #include "animalcollar.h"
+#include "animal.h"
 
 class CatCollar : public AnimalCollar
 {

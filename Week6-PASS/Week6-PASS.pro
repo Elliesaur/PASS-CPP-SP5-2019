@@ -10,8 +10,12 @@ SOURCES += \
         calculator.cpp \
         cat.cpp \
         catcollar.cpp \
+        cheese.cpp \
         divide.cpp \
-        main.cpp
+        main.cpp \
+        pineapple.cpp \
+        pizza.cpp \
+        topping.cpp
 
 HEADERS += \
     add.h \
@@ -20,4 +24,8 @@ HEADERS += \
     calculator.h \
     cat.h \
     catcollar.h \
-    divide.h
+    cheese.h \
+    divide.h \
+    pineapple.h \
+    pizza.h \
+    topping.h

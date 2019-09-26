@@ -5,6 +5,10 @@
 #include "divide.h"
 #include "animalcollar.h"
 #include "catcollar.h"
+#include "pizza.h"
+#include "topping.h"
+#include "cheese.h"
+#include "pineapple.h"
 
 using namespace std;
 
@@ -13,7 +17,13 @@ int main()
     // Make a cat collar and store it as an animal collar
     AnimalCollar collar = CatCollar{};
     // This would still be treated as the collar base.
-    cout << collar.name() << endl;
+    //cout << collar.name() << endl;
+
+    AnimalCollar *collarPtrX{};
+
+    std::shared_ptr<AnimalCollar> collarX{};
+    //collarX->name();
+
 
     // Make a cat collar and store it as an animal collar
     std::shared_ptr<AnimalCollar> collarBaseNew = std::make_shared<CatCollar>();
@@ -88,6 +98,16 @@ int main()
     int result = calc.calculate<Add, int>(add, 1, 2);
 
     cout << result << endl;
+
+    cout << "Pizza time!" << endl;
+
+    shared_ptr<Pizza> thePizza {std::make_shared<Pizza>()};
+
+    shared_ptr<Cheese> cheese {std::make_shared<Cheese>(thePizza)};
+    shared_ptr<Pineapple> cheese_and_pineapple {std::make_shared<Pineapple>(cheese)};
+
+    cout << cheese_and_pineapple->name() << endl;
+
 
     return 0;
 }

@@ -12,8 +12,90 @@
 
 using namespace std;
 
+class Foo {
+public:
+    Foo() {
+
+    }
+protected:
+    int _a;
+    int _b;
+    int _c;
+};
+class Bar {
+public:
+    Bar() {
+
+    }
+protected:
+    int _d;
+    int _e;
+};
+
+class FooBar : public Foo, public Bar {
+public:
+    FooBar() : Foo{}, Bar{} {
+
+    }
+    void Something() {
+
+        [&]() {
+          _a = 2;
+          _b = 3;
+          _c = 4;
+          _d = 5;
+          _e = 6;
+        }();
+
+        auto lambda = [&]() {
+          _a = 2;
+          _b = 3;
+          _c = 4;
+          _d = 5;
+          _e = 6;
+        };
+
+        lambda();
+        lambda();
+        lambda();
+    }
+};
+
+void something(int a) {
+    cout << "No" << endl;
+}
+
+void something2(int a) {
+    cout << "Hi" << endl;
+}
+
 int main()
 {
+
+    auto somethingPtr = &something;
+
+    somethingPtr(1);
+
+    somethingPtr = &something2;
+
+    somethingPtr(2);
+
+    int a = 1;
+    int b = 2;
+
+    auto lambda = [&]() {
+      cout << "Hi" << endl;
+      cout << a + b << endl;
+      a = a + b;
+    };
+
+    lambda();
+    lambda();
+
+    cout << a << endl;
+    cout << b << endl;
+
+    return 0;
     // Make a cat collar and store it as an animal collar
     AnimalCollar collar = CatCollar{};
     // This would still be treated as the collar base.

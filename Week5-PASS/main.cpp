@@ -60,49 +60,59 @@ void output2()
     // What would be the better way to avoid dealing with C-style arrays?
 }
 
-
 int main()
 {
-    // What is the difference between a pointer and a reference?
-    int *p{nullptr};
-    // Why do we use pointers?
-
-    // What are the two types of main storage you'll be using in C++?
-
-    // What is the function of each of the storage methods?
-
-    // How do we get the address of a local variable?
-
-    // What would be the best way to use pointers in modern C++?
-
-    // What is dereferencing and why do we need to dereference?
-
-    // What is the 'arrow operator' and how does it relate to pointers and complex types?
-
-    int count{100};
-    int count2{500};
-
-    std::cout << count << std::endl;
-
-    // How do we get the address?
-    int *pointerToCount{&count};
-    std::cout << pointerToCount << std::endl;
-    std::cout << *pointerToCount << std::endl;
-
-    // How do we get the address?
-    int *pointerToCount2{&count2};
-    int diff = int(pointerToCount2 - pointerToCount);
-    std::cout << diff << std::endl;
-
-    // What is this doing?
-    int *whatAmI = pointerToCount + diff;
-    std::cout << whatAmI << std::endl;
-    std::cout << *whatAmI << std::endl;
-
-    std::cout << "----------" << std::endl;
-    //output1();
-    std::cout << "----------" << std::endl;
-    output2();
-    std::cout << "----------" << std::endl;
-    return 0;
+    int x[5] = {50, 100, 150, 200, 250};
+    std::cout << *x << std::endl;
+    ++(*x);
+    *(x + 2) = 1000;
+    for (int i{0}; i < int(sizeof(x) / sizeof(x[0])); ++i)
+    {
+        std::cout << x[i] << std::endl;
+    }
 }
+//int main()
+//{
+//    // What is the difference between a pointer and a reference?
+//    int *p{nullptr};
+//    // Why do we use pointers?
+
+//    // What are the two types of main storage you'll be using in C++?
+
+//    // What is the function of each of the storage methods?
+
+//    // How do we get the address of a local variable?
+
+//    // What would be the best way to use pointers in modern C++?
+
+//    // What is dereferencing and why do we need to dereference?
+
+//    // What is the 'arrow operator' and how does it relate to pointers and complex types?
+
+//    int count{100};
+//    int count2{500};
+
+//    std::cout << count << std::endl;
+
+//    // How do we get the address?
+//    int *pointerToCount{&count};
+//    std::cout << pointerToCount << std::endl;
+//    std::cout << *pointerToCount << std::endl;
+
+//    // How do we get the address?
+//    int *pointerToCount2{&count2};
+//    int diff = int(pointerToCount2 - pointerToCount);
+//    std::cout << diff << std::endl;
+
+//    // What is this doing?
+//    int *whatAmI = pointerToCount + diff;
+//    std::cout << whatAmI << std::endl;
+//    std::cout << *whatAmI << std::endl;
+
+//    std::cout << "----------" << std::endl;
+//    //output1();
+//    std::cout << "----------" << std::endl;
+//    output2();
+//    std::cout << "----------" << std::endl;
+//    return 0;
+//}

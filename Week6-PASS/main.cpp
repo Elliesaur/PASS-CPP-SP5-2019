@@ -14,8 +14,9 @@ using namespace std;
 
 class Foo {
 public:
-    Foo() {
-
+    Foo() : _a{1}, _b{1}, _c{5} { }
+    int Bar() {
+        return _a + _b;
     }
 protected:
     int _a;
@@ -24,8 +25,9 @@ protected:
 };
 class Bar {
 public:
-    Bar() {
-
+    Bar() : _d{3}, _e{2} { }
+    int Foo() {
+        return _d + _e;
     }
 protected:
     int _d;
@@ -34,33 +36,25 @@ protected:
 
 class FooBar : public Foo, public Bar {
 public:
-    FooBar() : Foo{}, Bar{} {
-
-    }
-    void Something() {
-
-        [&]() {
-          _a = 2;
-          _b = 3;
-          _c = 4;
-          _d = 5;
-          _e = 6;
+    FooBar() : Foo::Foo{}, Bar::Bar{} { }
+    int Bar() {
+        int b = _a;
+        int a = _b;
+        [=]() mutable {
+          a = b;
         }();
-
-        auto lambda = [&]() {
-          _a = 2;
-          _b = 3;
-          _c = 4;
-          _d = 5;
-          _e = 6;
-        };
-
-        lambda();
-        lambda();
-        lambda();
+        _a += a;
+        _b += b;
+        _e = Foo::Bar();
+        _c = Bar::Foo();
+        return 1;
     }
 };
-
+int main2() {
+    FooBar *barfoo = new FooBar();
+    barfoo->Bar();
+    delete barfoo;
+}
 void something(int a) {
     cout << "No" << endl;
 }
